@@ -1,0 +1,124 @@
+<!-- customernavbar -->
+<app-customernavbar></app-customernavbar>
+
+<br>
+
+<!-- cart -->
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-5">
+
+      <div class="card shadow" style="width: 100%;">
+        <div class="card-header">
+          {{personalDetails}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{name}}</h5>
+          <p class="card-text">{{phone}}</p>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card shadow" style="width: 100%;">
+        <div class="card-header">
+          {{addressDetails}}
+        </div>
+        <div class="card-body">
+
+          <div class="btn-group btn-group-toggle card-title" data-toggle="buttons">
+            <br>
+            <label class="btn btn-outline-primary  active">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> Home
+            </label>
+            <label class="btn btn-outline-primary  ">
+              <input type="radio" name="options" id="option2" autocomplete="off"> Work
+            </label>
+          </div>
+
+          <p class="card-text">{{address}}</p>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card shadow" style="width: 100%;">
+        <div class="card-header">
+          {{paymentDetails}}
+        </div>
+        <div class="card-body">
+
+          <div class="btn-group btn-group-toggle card-title" data-toggle="buttons">
+            <br>
+            <label class="btn btn-outline-primary  active">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> Debit Card
+            </label>
+            <label class="btn btn-outline-primary  ">
+              <input type="radio" name="options" id="option2" autocomplete="off"> UPI ID
+            </label>
+            <label class="btn btn-outline-primary ">
+              <input type="radio" name="options" id="option3" autocomplete="off"> Wallet
+            </label>
+          </div>
+
+          <p class="card-text">{{upi}}</p>
+        </div>
+      </div>
+
+      <br>
+
+    </div>
+
+
+    <div class="col-md-7">
+
+      <div class="card shadow" style="width: 100%;">
+        <div class="card-header">
+          {{cartDetails}}
+        </div>
+        <img src="../../../../assets/images/cartbill.png" style="width: 96px; height: 96px; margin: auto;"
+          class="card-img-top" alt="bill">
+        <div class="card-body">
+
+          <div>
+            <table class="table table-sm table-hover" style="width: 100%; text-align: left;">
+              <tr>
+                <th>Menu</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+              <tr>
+                <td>{{cartitem1}}</td>
+                <td>{{cartqty1}}</td>
+                <td>{{cartitemprice1}}</td>
+              </tr>
+              <tr>
+                <td>{{cartitem2}}</td>
+                <td>{{cartqty2}}</td>
+                <td>{{cartitemprice2}}</td>
+              </tr>
+              <tr>
+                <td>{{cartitem3}}</td>
+                <td>{{cartqty3}}</td>
+                <td>{{cartitemprice3}}</td>
+              </tr>
+            </table>
+          </div>
+
+          <div style="text-align: center;">
+            <a href="#" class="btn btn-warning" style="margin: auto;">Confirm Order</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <br>
+</div>
+
+
+<!-- footer -->
+<app-common-footer></app-common-footer>

@@ -1,0 +1,48 @@
+.logo {
+  width: 64px;
+  height: 64px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.sidebar-row {
+  height: 60px;
+  width: 100%;
+  background-color: #Fff;
+}
+
+.center {
+  text-align: center;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.sidebar-row:hover {
+  background-color: #FFCA28;
+  transform: translate3d(0px, -1px, 0px);
+}
+
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+
+}
+
+.date {
+  text-align: left;
+  font-weight: normal;
+  color: #5D6D7E;
+}
+
+.info-area {
+  width: 100%;
+  height: 100%;
+}

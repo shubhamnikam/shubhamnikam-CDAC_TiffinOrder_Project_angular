@@ -1,0 +1,41 @@
+.text-center {
+  text-align: center;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.info-card {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+
+}
+
+.info-card-rect {
+  width: 400px;
+  height: 200px;
+  text-align: center;
+
+}
+
+
+.info-card:hover {
+  background-image: linear-gradient(to bottom right, #eeaeca, #94bbe9);
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+  transform: translate3d(0px, -1px, 0px);
+}
+
+.info-card-rect:hover {
+  background-image: linear-gradient(to bottom right, #acb6e5, #86fde8);
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+  transform: translate3d(0px, -1px, 0px);
+}
+
+
+.title {
+  font-size: 80px;
+}

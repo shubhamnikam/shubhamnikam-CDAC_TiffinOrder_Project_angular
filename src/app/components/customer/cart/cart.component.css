@@ -1,0 +1,24 @@
+.brand-row {
+    background-image: url('/assets/images/kkk.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    text-align: center;
+  }
+  
+
+.text-center {
+  text-align: center;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.shadow
+{
+  
+}

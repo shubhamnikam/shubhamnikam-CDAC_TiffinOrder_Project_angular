@@ -1,0 +1,31 @@
+.nav-item-padding {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.navbar-logo {
+  margin-left: 108px;
+}
+
+.navbar-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+}
+
+.textcolor-black {
+  color: #566573;
+}
+
+.textcolor-black:hover {
+  color: black;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.margin-5 {
+  margin: 10px;
+}

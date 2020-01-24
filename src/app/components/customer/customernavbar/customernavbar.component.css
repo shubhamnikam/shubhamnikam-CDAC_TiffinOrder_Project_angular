@@ -1,0 +1,18 @@
+.navbar-logo {
+  margin-left: 108px;
+}
+
+.navbar-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.margin-5 {
+  margin: 10px;
+}
