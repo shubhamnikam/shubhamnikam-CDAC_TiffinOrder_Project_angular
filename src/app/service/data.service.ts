@@ -19,20 +19,32 @@ export class DataService {
   sendUserSignUpDetailsToValidate(signUpCredentialDataObj){    
     return this.httpHelper.post(this.baseUrl + "user/signup", signUpCredentialDataObj);
   }
-
+  
   //=========load default menu===========
   loadDefaultMenuToCustomerMenuHome(dailyUserMenuType){   
     return this.httpHelper.get(this.baseUrl + "customer/menu/"+dailyUserMenuType);
   }
 
   //=========send selected menu to cart===========
-  sendCartDataToServerSide(cartData){
+  sendCartDataToServerSide(cartData,userId){
     console.log(cartData);
-    return this.httpHelper.post(this.baseUrl + "customer/cart", cartData);
+    return this.httpHelper.post(this.baseUrl + "customer/cart/" + userId, cartData);
   } 
+
   //=========send selected menu to cartItems===========
-  sendCartItemsDataToServerSide( cartItemsData){
-    console.log(cartItemsData);
-    return this.httpHelper.post(this.baseUrl + "customer/cartitems", cartItemsData);
+  sendCartItemsDataToServerSide(cartItemsData, getCartIdFromRequest1){
+    return this.httpHelper.post(
+      this.baseUrl + "customer/cartitems/" + getCartIdFromRequest1, cartItemsData);
   }  
+
+
+  //=============add new owner=============================
+  addNewOwnerService(signUpCredentialDataObj) {
+    return this.httpHelper.post(this.baseUrl + "owner/addnewowner", signUpCredentialDataObj);
+  }
+  
+  //=============add new menu=============================
+  addNewMenuService(menuObj, categoryId) {
+    return this.httpHelper.post(this.baseUrl + "owner/addnewmenu/"+categoryId, menuObj);
+  }
 }

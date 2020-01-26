@@ -1,56 +1,55 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService implements CanActivate {
-  constructor(private router: Router) { }
+  constructor(public router: Router) {
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.IsLoggedIn()) {
-      console.log("User Has Logged in");
+    if (this.isLoggedIn()) {
       return true;
-    }
-    else {
-      console.log("User Has not Logged in");
-      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['./user/signin']);
       return false;
     }
+
   }
 
-  IsLoggedIn() {
-
-    if (window.sessionStorage.getItem("isActive") != null
+  isLoggedIn() {
+    if (window.sessionStorage.getItem('active') != null
       &&
-      window.sessionStorage.getItem("isActive") == "1") {
-      // some logic to check if person has logged in
+      window.sessionStorage.getItem('active') == '1') {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
+
   }
 
-  CheckloginCredentialDataWithDB(loginCredentialData) {
-    //Call Some  Service using Post Method
-    //to check loginCredentialData with DB 
-    if (loginCredentialData.email == "abc" && loginCredentialData.password == "abc@123") {
-      window.sessionStorage.setItem("isActive", "1");
-      return true;
-    }
-    else {
-      return false;
-    }
+  checkUser(currentUserDetails, userType) {
+    var userData = JSON.stringify(currentUserDetails);
+    window.sessionStorage.setItem('active', '1');
+    window.sessionStorage.setItem('userData', userData);
+    //window.sessionStorage.setItem('userId', userData);
+    window.sessionStorage.setItem('userType', userType);
   }
 
-  Logout() {
-    window.sessionStorage.setItem("isActive", "0");
-    this.router.navigate(['/login']);
+  signOut() {
+
+    console.log("In Auth SignOut");
+    //window.sessionStorage.setItem('active', '0');
+    window.sessionStorage.removeItem('active');
+    window.sessionStorage.removeItem('userData');
+    //window.sessionStorage.removeItem('userId');
+    window.sessionStorage.removeItem('userType');
+
+    window.sessionStorage.removeItem('finalCartPrice');
+    window.sessionStorage.removeItem('cartId');
+    window.sessionStorage.removeItem('finalCartData');
+    window.sessionStorage.removeItem('isOrderStatus');
   }
 
 }
-
-
-
-

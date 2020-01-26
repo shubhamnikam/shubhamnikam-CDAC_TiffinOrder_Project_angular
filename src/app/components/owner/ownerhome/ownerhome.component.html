@@ -10,14 +10,14 @@
 
       <table style=" width: 100%;">
 
-        <tr class="sidebar-row no-gutter">
+        <tr class="sidebar-row" routerLink="/owner/addmenu">
           <td class="center">
             <img class="margin-auto" src="../../../../assets/images/add-menu-black.png">
           </td>
           <td style="text-align: left;">Add Menu</td>
         </tr>
 
-        <tr class="sidebar-row ">
+        <tr class="sidebar-row" routerLink="/owner/addadmin">
           <td class="center">
             <img class="margin-auto" src="../../../../assets/images/admin-black.png">
           </td>
@@ -25,40 +25,28 @@
         </tr>
 
 
-        <tr class="sidebar-row ">
+        <tr class="sidebar-row" routerLink="/owner/deletemenu">
           <td class="center">
             <img class="margin-auto" src="../../../../assets/images/menu-black.png">
           </td>
-          <td style="text-align: left;">Update Menu</td>
+          <td style="text-align: left;">Delete Menu</td>
         </tr>
 
-        <tr class="sidebar-row">
+
+        <tr class="sidebar-row" routerLink="/owner/orders">
           <td class="center">
             <img class="margin-auto" src="../../../../assets/images/order-black.png">
           </td>
           <td style="text-align: left;">Orders</td>
         </tr>
 
-        <tr class="sidebar-row">
+        <tr class="sidebar-row" routerLink="/owner/customers">
           <td class="center">
             <img class="margin-auto" src="../../../../assets/images/customer-black.png">
           </td>
           <td style="text-align: left;">Customers</td>
         </tr>
 
-        <tr class="sidebar-row">
-          <td class="center">
-            <img class="margin-auto" src="../../../../assets/images/transaction-black.png">
-          </td>
-          <td style="text-align: left;">Transactions</td>
-        </tr>
-
-        <tr class="sidebar-row">
-          <td class="center">
-            <img class="margin-auto" src="../../../../assets/images/messages-black.png">
-          </td>
-          <td style="text-align: left;">Messages</td>
-        </tr>
 
       </table>
 
@@ -81,10 +69,10 @@
 
             <table align="right">
               <tr>
-                <td class="date">24 Jan, 2020, Friday </td>
+                <td class="date">{{todaysDate}}</td>
 
                 <td>
-                  <img style="padding: 5px;" src="../../../../assets/images/logout-red.png">
+                  <img (click) = "signOut()" style="padding: 5px;" src="../../../../assets/images/logout-red.png">
                 </td>
               </tr>
             </table>
@@ -95,7 +83,9 @@
         <br>
 
         <div class="info-area">
+
           <app-dashboardhome></app-dashboardhome>
+
         </div>
 
       </div>

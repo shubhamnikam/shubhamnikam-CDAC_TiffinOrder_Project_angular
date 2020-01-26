@@ -12,21 +12,54 @@ export class MenuComponent implements OnInit {
   public quantity = 0;
   public dailyMenuListData;
   public menuQuantity: any;
-  public finalCartPrice=130;
-  public dailyMenuListDataLength:number;
+  public finalCartPrice = 0;
+  public tempFinalCartPrice = 0;
+  public dailyMenuListDataLength: number;
+  public cartItemsData = [];
+  public itemsPriceArray = [];
+  public getCartIdFromRequest1: number;
+  public orderType = "LUNCH";
+  tempUser: any;
 
 
   constructor(private service: DataService, private router: Router) { }
 
   ngOnInit() {
+    this.setOrderDefaultType();
+    //this.loadDefaultMenu();
+    
+  }
+
+
+  setOrderDefaultType(){
+        this.orderType = "LUNCH";
+        this.loadDefaultMenu();
+  } 
+  setOrderTypeLunch(){
+    console.log("LUNCH");
+    this.orderType = "LUNCH";
+    this.loadDefaultMenu();
+  }
+  setOrderTypeDinner() {
+    console.log("DINNER");
+    this.orderType = "DINNER";
+    this.loadDefaultMenu();
+  }
+  setOrderTypeSnack(){
+    console.log("SNACK");
+    this.orderType = "SNACK";
     this.loadDefaultMenu();
   }
 
+
+
+
+
   loadDefaultMenu() {
     //do default requesting via link    
-    let defaultDailyMenuType = "LUNCH";
+    //let defaultDailyMenuType = "LUNCH";
     let observableResult = this.service
-      .loadDefaultMenuToCustomerMenuHome(defaultDailyMenuType);
+      .loadDefaultMenuToCustomerMenuHome(this.orderType);
 
     let responseObj = null;
 
@@ -39,11 +72,7 @@ export class MenuComponent implements OnInit {
       console.log(this.dailyMenuListDataLength);
 
       this.menuQuantity = [this.dailyMenuListDataLength];
-      // this.menuQuantity = new Array(this.dailyMenuListDataLength);
-      //this.tempMenuQuantity = new Array(this.dailyMenuListDataLength);
-
       for (let i = 0; i < this.dailyMenuListDataLength; i++) {
-        // this.tempMenuQuantity[i] = 0;
         this.menuQuantity[i] = 0;
       }
 
@@ -52,10 +81,15 @@ export class MenuComponent implements OnInit {
     })
   }
 
+
+
+
+
+
+
+
   decrementQuantity(index) {
     if (this.menuQuantity[index] > 0) {
-
-      // --this.tempMenuQuantity[index];
       --this.menuQuantity[index];
     }
     console.log(this.menuQuantity[index]);
@@ -63,67 +97,134 @@ export class MenuComponent implements OnInit {
 
   incrementQuantity(index) {
     if (this.menuQuantity[index] < 10) {
-      //++this.tempMenuQuantity[index];
       ++this.menuQuantity[index];
     }
     console.log(this.menuQuantity[index]);
   }
 
+
+
+
+
+
+
+
+
+
   sendCartDataToServerSide() {
 
-    var getCartIdFromRequest1;
-
-    //==============cartItemsData================
-    let cartItemsData = [];
-
+    //===========calculate finalPrice=============
     for (let i = 0; i < this.dailyMenuListDataLength; i++) {
 
       let tempMenuData = this.dailyMenuListData[i];
 
-      cartItemsData[i] = {
-        cartId: getCartIdFromRequest1,
-        menuId: tempMenuData.menuId,
-        cartItemsMenuName: tempMenuData.menuName,
+      this.itemsPriceArray[i] = {
         cartItemsPrice: tempMenuData.menuPrice,
         cartItemsQuantity: this.menuQuantity[i],
         cartItemsTotalPrice: (parseInt(tempMenuData.menuPrice) * this.menuQuantity[i])
       }
-
-      this.finalCartPrice = this.finalCartPrice + cartItemsData[i].cartItemsTotalPrice;
-
-      //console.log(cartItemsData[i]);
+      this.finalCartPrice = this.finalCartPrice + this.itemsPriceArray[i].cartItemsTotalPrice;
+      // console.log(this.cartItemsData[i]);
     }
 
-
     //==============cartData================
-     let cartData = {
+    let cartData = {
       cartPrice: this.finalCartPrice,
-      cartDate: new Date().toISOString().slice(0,10), //format==> 2020-12-01
+      cartDate: new Date().toISOString().slice(0, 10), //format==> 2020-12-01
       cartTime: null,
-      orderType: 'DINNER',
+      orderType: this.orderType,
     }
 
     console.log(cartData);
 
 
-
-
     //==============service for sending only cartData :: post request 1=============
-    //============== :: post request 2 ====get only cartId back============
-    let observable1 = this.service.sendCartDataToServerSide(cartData);
+    //============== :: post request 1 ====get only cartId back============
+
+    this.tempUser = window.sessionStorage.getItem('userData');
+
+    let observable1 = this.service.sendCartDataToServerSide(cartData, JSON.parse(this.tempUser).userId);
     let tempResultObjectHolder1;
     let tempCartId;
 
 
     observable1.subscribe((result) => {
       console.log(result);
-      
+
       tempResultObjectHolder1 = result;
-      console.log("=========" + tempResultObjectHolder1);
-      
+
       tempCartId = tempResultObjectHolder1.cartId;
 
-      getCartIdFromRequest1 = tempCartId;
+      this.getCartIdFromRequest1 = tempCartId;
+      console.log(this.getCartIdFromRequest1);
+
+
+      this.sendCartItemsToServerSide();
+
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+  sendCartItemsToServerSide() {
+
+    //==============cartItemsData================
+    for (let i = 0; i < this.dailyMenuListDataLength; i++) {
+
+      let tempMenuData = this.dailyMenuListData[i];
+      this.cartItemsData[i] = {
+        menuId: tempMenuData.menuId,
+        cartItemsMenuName: tempMenuData.menuName,
+        cartItemsPrice: tempMenuData.menuPrice,
+        cartItemsQuantity: this.menuQuantity[i],
+        cartItemsTotalPrice: (this.menuQuantity[i]) * tempMenuData.menuPrice,
+      }
+
+      // if (this.menuQuantity[i] > 0) {
+      //   this.cartItemsData[i] = {
+      //     menuId: tempMenuData.menuId,
+      //     cartItemsMenuName: tempMenuData.menuName,
+      //     cartItemsPrice: tempMenuData.menuPrice,
+      //     cartItemsQuantity: this.menuQuantity[i],
+      //     cartItemsTotalPrice: (this.menuQuantity[i]) * tempMenuData.menuPrice,
+      //   }
+      // }
+    }
+
+    let finalCartData = this.cartItemsData;
+
+    window.sessionStorage.setItem('finalCartPrice', JSON.stringify(this.finalCartPrice));
+    this.finalCartPrice = 0;
+
+    console.log("finalCartData===============>");
+    console.log(finalCartData);
+
+    window.sessionStorage.setItem('cartId', JSON.stringify(this.getCartIdFromRequest1));
+    window.sessionStorage.setItem('finalCartData', JSON.stringify(this.cartItemsData));
+
+
+
+    //==============service for sending only cartItemsData =============
+    //============== :: post request 2 ====get nav url============
+
+    let observable2 = this.service.sendCartItemsDataToServerSide(finalCartData, this.getCartIdFromRequest1);
+    let tempResultObjectHolder2;
+    let tempNavigationURL;
+    observable2.subscribe((result) => {
+      tempResultObjectHolder2 = result;
+      tempNavigationURL = tempResultObjectHolder2.cartURL;
+
+      console.log(result);
+      console.log(tempNavigationURL);
 
     }, (error) => {
       console.log(error);
@@ -131,22 +232,10 @@ export class MenuComponent implements OnInit {
 
 
 
-    //==============service for sending only cartItemsData =============
-    //============== :: post request 2 ====get nav url============
 
-    // let observable2 = this.service.sendCartItemsDataToServerSide(cartItemsData);
-    // let tempResultObjectHolder2;
-    // let tempNavigationURL;
-    // observable2.subscribe((result) => {
-    //   tempResultObjectHolder2 = result;
-    //   tempNavigationURL = tempResultObjectHolder2.cartId;
-
-    // }, (error) => {
-    //   console.log(error);
-    // });
-
-    // //navigate
-    // this.router.navigate(['.' + tempNavigationURL]);
+    //setup functionality to not go back
+    window.sessionStorage.setItem('isOrderStatus',"1");
+    this.router.navigate(['./customer/cart']);
 
   }
 }

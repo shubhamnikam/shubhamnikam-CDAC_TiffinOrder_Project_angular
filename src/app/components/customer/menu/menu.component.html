@@ -65,13 +65,13 @@
 <div class="container">
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
     <label class="btn btn-outline-primary active">
-      <input type="radio" name="options" id="option1" checked> Lunch
+      <input type="radio" name="options" id="option1" (click)="setOrderTypeLunch()" checked> Lunch
     </label>
     <label class="btn btn-outline-primary">
-      <input type="radio" name="options" id="option2"> Dinner
+      <input type="radio" name="options" (click)="setOrderTypeDinner()" id="option2"> Dinner
     </label>
     <label class="btn btn-outline-primary">
-      <input type="radio" name="options" id="option3"> Snack
+      <input type="radio" name="options" id="option3" (click)="setOrderTypeSnack()"> Snack
     </label>
 
   </div>

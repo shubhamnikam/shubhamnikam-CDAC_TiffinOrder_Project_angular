@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/service/data.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +14,10 @@ export class SigninComponent implements OnInit {
   public password = "";
   public message = "";
 
-  constructor(private service: DataService,private router: Router) { }
+  constructor(private service: DataService,
+    public route: ActivatedRoute,
+    public router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -21,30 +25,48 @@ export class SigninComponent implements OnInit {
   callForSignInValidation() {
 
     let signInCredentialData = {
-      userEmail : this.email,
-      userPassword : this.password
+      userEmail: this.email,
+      userPassword: this.password
     }
 
     let responseObj = null;
     let navigationURL = null;
+    let currentUserDetails = null;
+    let userType = null;
 
     console.log(signInCredentialData);
-    
+
     let observableResult = this.service
       .sendUserSignInDetailsToValidate(signInCredentialData);
 
-    observableResult.subscribe((result)=>{
+    observableResult.subscribe((result) => {
       console.log(result);
-      responseObj = result;
+      
+        responseObj = result;
+
+      //get current user details and save it in session storage
+      currentUserDetails = responseObj.currentUserDetails;
+
+      //get userType 
+      userType = responseObj.userType;
+
+      this.authService.checkUser(currentUserDetails,userType);
+      
+      //get nav url
       navigationURL = responseObj.userURL;
-      console.log(navigationURL);
-      this.router.navigate(['.'+navigationURL]);
-    },(error)=>{
+
+      if (userType =="CUSTOMER"){
+        this.router.navigate(['./customer/menu']);
+      } else if (userType == "OWNER"){
+        this.router.navigate(['./owner/dashboard']);
+      } else{
+        alert("Invalid Credential");
+      }
+
+    }, (error) => {
       console.log(error);
-        this.message = "Invalid login credential...";
+        this.message = "Invalid credential...";
     })
   }
-
-
 
 }

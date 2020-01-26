@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
+import { RoutesRecognized, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ownerhome',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OwnerhomeComponent implements OnInit {
 
-  constructor() { }
+  todaysDate: Date = new Date();
+
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
+  signOut() {
+
+    console.log("In Customer SignOut");
+
+    this.authService.signOut();
+    this.router.navigate(['./user/signin']);
+  }
 }

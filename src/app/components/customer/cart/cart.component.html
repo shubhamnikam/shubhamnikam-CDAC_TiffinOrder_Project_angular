@@ -12,11 +12,12 @@
 
       <div class="card shadow" style="width: 100%;">
         <div class="card-header">
-          {{personalDetails}}
+          {{personalDetailsText}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{name}}</h5>
-          <p class="card-text">{{phone}}</p>
+          <h5  class="card-title">Name : {{userName}}</h5>
+          <p class="card-text">Phone : {{userPhone}}</p>
+          <p class="card-text">Email : {{userEmail}}</p>
         </div>
       </div>
 
@@ -24,7 +25,7 @@
 
       <div class="card shadow" style="width: 100%;">
         <div class="card-header">
-          {{addressDetails}}
+          {{addressText}}
         </div>
         <div class="card-body">
 
@@ -38,7 +39,7 @@
             </label>
           </div>
 
-          <p class="card-text">{{address}}</p>
+          <p class="card-text">{{userAddressDetails}}</p>
         </div>
       </div>
 
@@ -46,7 +47,7 @@
 
       <div class="card shadow" style="width: 100%;">
         <div class="card-header">
-          {{paymentDetails}}
+          {{paymentDetailsText}}
         </div>
         <div class="card-body">
 
@@ -76,7 +77,8 @@
 
       <div class="card shadow" style="width: 100%;">
         <div class="card-header">
-          {{cartDetails}}
+          {{cartDetailsText}}
+    <p class="card-text">{{userJoinDate}}</p>
         </div>
         <img src="../../../../assets/images/cartbill.png" style="width: 96px; height: 96px; margin: auto;"
           class="card-img-top" alt="bill">
@@ -84,32 +86,33 @@
 
           <div>
             <table class="table table-sm table-hover" style="width: 100%; text-align: left;">
-              <tr>
+              <tr  class="text-center">
                 <th>Menu</th>
                 <th>Quantity</th>
+                <th></th>
                 <th>Price</th>
+                <th>ItemPrice</th>
               </tr>
-              <tr>
-                <td>{{cartitem1}}</td>
-                <td>{{cartqty1}}</td>
-                <td>{{cartitemprice1}}</td>
-              </tr>
-              <tr>
-                <td>{{cartitem2}}</td>
-                <td>{{cartqty2}}</td>
-                <td>{{cartitemprice2}}</td>
-              </tr>
-              <tr>
-                <td>{{cartitem3}}</td>
-                <td>{{cartqty3}}</td>
-                <td>{{cartitemprice3}}</td>
+              <tr *ngFor="let item of cartItemsList">
+                <td class="text-center">{{item.cartItemsMenuName}}</td>
+                <td class="text-center">{{item.cartItemsQuantity}}</td>
+                <td class="text-center"> * </td>
+                <td class="text-center">{{item.cartItemsPrice}}</td>
+                <td class="text-center">{{item.cartItemsTotalPrice}}</td>
               </tr>
             </table>
           </div>
 
+           <div class="card-header">
+             <h3>Total Price : {{finalCartPrice}}</h3>
+           </div>
+
           <div style="text-align: center;">
-            <a href="#" class="btn btn-warning" style="margin: auto;">Confirm Order</a>
+            <a onclick="setTimeout(function(){window.location = '/customer/menu';}, 3000)" class="btn btn-warning"
+              data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#myModal"
+              style="margin: auto;">Confirm Order</a>
           </div>
+
         </div>
       </div>
 
@@ -122,3 +125,26 @@
 
 <!-- footer -->
 <app-common-footer></app-common-footer>
+
+
+<div id="myModal" class="modal fade center" role="dialog">
+  <div class="modal-dialog modal-dialog-centered margin-auto">
+
+    <!-- Modal content-->
+    <div class="modal-content margin-auto">
+      <div class="modal-header" style="background-color: mediumseagreen;">
+        <h4 style="color: #fff;" class="modal-title margin-auto">Order Successful</h4>
+      </div>
+
+      <div class="modal-body margin-auto">
+        <img src="../../../../assets/images/cooking.gif" style="width: 96px; height: 96px;">
+      </div>
+
+      <div class="modal-footer margin-auto">
+        <p>Redirecting to home page</p>
+      </div>
+
+
+    </div>
+  </div>
+</div>
