@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  tempUser = "";
+  parsedTempUserData="";
+
+  userName = "";
+  userEmail = "";
+  userPhone = "";
+  userJoinDate="";
+
+
+  constructor(private service : DataService) { }
 
   ngOnInit() {
+
+    this.setUserName();
+
   }
 
+  //NOTE :: setUserName
+    setUserName(){
+
+      this.tempUser = window.sessionStorage.getItem('userData');
+
+      this.parsedTempUserData = JSON.parse(this.tempUser);
+      console.log(this.parsedTempUserData);
+      
+      //this.userName = this.parsedTempUserData.userName; 
+
+      // this.userName = this.parsedTempUserData.userName;
+      // this.userEmail = this.parsedTempUserData.userEmail;
+      // this.userPhone = this.parsedTempUserData.userPhone;
+      // this.userJoinDate = new Date().toLocaleDateString();
+    }
 }

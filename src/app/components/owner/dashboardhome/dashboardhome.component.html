@@ -4,8 +4,9 @@
 
     <div class="col-md-3">
       <div class="card info-card margin-auto">
-        <div class="card-body">
-          <h5 class="card-title title">25</h5>
+        <div class="card-body" routerLink='/owner/orders'>
+          <h5 class="card-title title">
+            {{todaysNumberOfOrders}}</h5>
           <p class="card-text">Orders Today</p>
         </div>
       </div>
@@ -15,26 +16,27 @@
 
     <div class="col-md-3">
       <div class="card info-card margin-auto">
-        <div class="card-body">
-          <h5 class="card-title title">4</h5>
-          <p class="card-text">New Customers</p>
+        <div class="card-body" routerLink="/owner/customers">
+          <h5 class="card-title title">
+            {{todaysNumberOfNewUsers}}</h5>
+          <p class="card-text">New Customers</p>  
         </div>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="card info-card margin-auto">
-        <div class="card-body">
-          <h5 class="card-title title">9</h5>
-          <p class="card-text">Dinner Orders</p>
+        <div class="card-body" routerLink="/owner/orders">
+          <h5 class="card-title title">{{todaysNumberOfLunchOrders}}</h5>
+          <p class="card-text">Lunch Orders</p>
         </div>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="card info-card margin-auto">
-        <div class="card-body">
-          <h5 class="card-title title">16</h5>
+        <div class="card-body" routerLink="/owner/orders">
+          <h5 class="card-title title">{{todaysNumberOfDinnerOrders}}</h5>
           <p class="card-text">Dinner Orders</p>
         </div>
       </div>
@@ -50,7 +52,7 @@
     <div class="col-md-6">
       <div class="card info-card-rect margin-auto">
         <div class="card-body">
-          <h5 class="card-title title">8205 ₹</h5>
+          <h5 class="card-title title">{{todaysTotalSumOfOrders}} ₹</h5>
           <p class="card-text">Total Orders Amount Today</p>
         </div>
       </div>

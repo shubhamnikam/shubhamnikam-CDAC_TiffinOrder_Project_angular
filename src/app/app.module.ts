@@ -25,7 +25,7 @@ import { OwnerhomeComponent } from './components/owner/ownerhome/ownerhome.compo
 import { DashboardhomeComponent } from './components/owner/dashboardhome/dashboardhome.component';
 import { AddadminComponent } from './components/owner/addadmin/addadmin.component';
 import { AddmenuComponent } from './components/owner/addmenu/addmenu.component';
-import { SidebarComponent } from './components/owner/sidebar/sidebar.component';
+import { DailymenuComponent } from './component/owner/dailymenu/dailymenu.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +44,10 @@ import { SidebarComponent } from './components/owner/sidebar/sidebar.component';
     DashboardhomeComponent,
     AddadminComponent,
     AddmenuComponent,
-    SidebarComponent,
     DeletemenuComponent,
     OrdersComponent,
-    CustomersComponent
+    CustomersComponent,
+    DailymenuComponent
     
   ],
   imports: [

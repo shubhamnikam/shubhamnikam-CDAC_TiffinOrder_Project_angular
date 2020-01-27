@@ -37,7 +37,7 @@ export class DataService {
       this.baseUrl + "customer/cartitems/" + getCartIdFromRequest1, cartItemsData);
   }  
 
-
+//=========================OWNER SIDE=================================================
   //=============add new owner=============================
   addNewOwnerService(signUpCredentialDataObj) {
     return this.httpHelper.post(this.baseUrl + "owner/addnewowner", signUpCredentialDataObj);
@@ -47,4 +47,28 @@ export class DataService {
   addNewMenuService(menuObj, categoryId) {
     return this.httpHelper.post(this.baseUrl + "owner/addnewmenu/"+categoryId, menuObj);
   }
+
+  //=============get All Users List=============================
+  getAllUsers(){
+    return this.httpHelper.get(this.baseUrl + "owner/getAllUsers");
+  } 
+  
+  //=============get All Orders List=============================
+  //==============taken from cart table==================
+  getAllOrders(){ 
+    return this.httpHelper.get(this.baseUrl + "owner/getOrders");
+  }
+
+  getAllMenu() {
+    return this.httpHelper.get(this.baseUrl + "owner/getAllMenu");
+  }
+
+  deleteSelectedMenu(menuId) {
+    return this.httpHelper.delete(this.baseUrl + "owner/deleteMenu/" + menuId);
+  }
+
+  getBIDataService(){
+    return this.httpHelper.get(this.baseUrl + "owner/getAllBIData");
+  }
+
 }
