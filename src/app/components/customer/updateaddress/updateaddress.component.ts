@@ -3,18 +3,18 @@ import { DataService } from 'src/app/service/data.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-updateaddress',
+  templateUrl: './updateaddress.component.html',
+  styleUrls: ['./updateaddress.component.css']
 })
-export class ProfileComponent implements OnInit {
-
+export class UpdateaddressComponent implements OnInit {
+ 
   tempUser = "";
   parsedTempUserData = "";
   responseObj1;
   responseObj2;
   responseObj3;
-
+ 
   userId = "";
   userName = "";
   userEmail = "";
@@ -33,11 +33,6 @@ export class ProfileComponent implements OnInit {
   workpincode = "";
   workstate = "";
 
-  card = "";
-  date = "";
-  cvv = "";
-  upi = "";
-
 
   constructor(private service: DataService, private router: Router) { }
 
@@ -45,8 +40,7 @@ export class ProfileComponent implements OnInit {
 
     this.getUserName();
     this.getAddressFromDB();
-    this.getPaymentFromDB();
-
+    
   }
 
   getUserName() {
@@ -56,7 +50,7 @@ export class ProfileComponent implements OnInit {
 
     this.userId = myParsedTempUserData.userId;
     console.log(this.userId);
-    
+
     this.userName = myParsedTempUserData.userName;
     this.userEmail = myParsedTempUserData.userEmail;
     this.userPhone = myParsedTempUserData.userPhone;
@@ -100,23 +94,57 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  getPaymentFromDB() {
-    let observableResult = this.service
-      .getPaymentService(this.userId);
 
+  //NOTE ====================Update======================
+  callToUpdateHomeAddress() {
+
+    let homeAddressData = {
+      addressType: 'HOME',
+      addressFieldOne: this.homefieldone,
+      addressFieldTwo: this.homefieldtwo,
+      addressCity: this.homecity,
+      addressPincode: this.homepincode,
+      addressState: this.homestate
+    }
+
+    let observableResult = this.service.updateAddressService(homeAddressData, this.userId);
     observableResult.subscribe((result) => {
-      console.log(result);
-      this.responseObj3 = result;
-
-      this.card = this.responseObj3.paymentCardNumber;
-      this.date = this.responseObj3.paymentCardExpiryDate;
-      this.cvv = this.responseObj3.paymentCardCVV;
-      this.upi = this.responseObj3.paymentUPI;
-
+      //success
     }, (error) => {
-      console.log(error);
+      //error
     })
+
+  }
+
+  callToUpdateWorkAddress() {
+
+    let workAddressData = {
+      addressType: 'WORK',
+      addressFieldOne: this.workfieldone,
+      addressFieldTwo: this.workfieldtwo,
+      addressCity: this.workcity,
+      addressPincode: this.workpincode,
+      addressState: this.workstate
+    }
+
+    let observableResult = this.service.updateAddressService(workAddressData, this.userId);
+    observableResult.subscribe((result) => {
+      //success
+    }, (error) => {
+      //error
+    })
+
   }
 
 
+
+
+
+
+
+
+
+
+
 }
+

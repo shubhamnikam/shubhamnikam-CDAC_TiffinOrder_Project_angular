@@ -1,0 +1,22 @@
+. center {
+  text-align: center;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.head-button {
+  width: 150px;
+}
+
+.header-style {
+  background-color: white;
+}
+
+.img-style{
+  width: 32px;
+  height: 32px;
+}

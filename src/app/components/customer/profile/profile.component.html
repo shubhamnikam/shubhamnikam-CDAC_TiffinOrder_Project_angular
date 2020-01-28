@@ -11,14 +11,12 @@
 
       <img src="../../../../assets/images/face.png">
       <br>
-      <h3>{{userName}}'s Profile</h3>
+      <h3>{{userName}}</h3>
+
+      <p class="grey-txt">Member since {{userJoinDate}}</p>
     </div>
+
   </div>
-
-  <br>
-  <br>
-
- 
 
   <div class="row">
 
@@ -27,80 +25,113 @@
 
       <div class="card shadow box" style="width: 100%;">
         <div class="card-header" style="font-weight: bold;">
-          Contact Details
+          Home Address
         </div>
         <div class="card-body">
           <p class="card-text">
-            {{userEmail}}
-            <br>
-            <br>
-            {{userPhone}}
+            {{homefieldone}}, {{homefieldtwo}}, {{homecity}}, {{homepincode}}, {{homestate}}
           </p>
         </div>
       </div>
 
+      <div class="col-md-6 center">
+
+        <div class="card shadow box" style="width: 100%;">
+          <div class="card-header" style="font-weight: bold;">
+            Work Address
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              {{workfieldone}}, {{workfieldtwo}}, {{workcity}}, {{workpincode}}, {{workstate}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+
+
     </div>
 
-    <div class="col-md-6 center">
+    <div class="row">
 
-      <div class="card shadow box" style="width: 100%;">
-        <div class="card-header" style="font-weight: bold;">
-          Payment Details
+
+      <div class="col-md-6 center">
+
+        <div class="card shadow box" style="width: 100%;">
+          <div class="card-header" style="font-weight: bold;">
+            Contact Details
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              {{userEmail}}
+              <br>
+              <br>
+              {{userPhone}}
+            </p>
+          </div>
         </div>
-        <div class="card-body">
-          <p class="card-text">
-            23XX XXXX XXXX XX96
-            <br>
-            <br>
-            user@paytm
-          </p>
+
+      </div>
+
+      <div class="col-md-6 center">
+
+        <div class="card shadow box" style="width: 100%;">
+          <div class="card-header" style="font-weight: bold;">
+            Payment Details
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              {{card}}
+              <br>
+              <br>
+              {{upi}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+
+      <div class="col-md-4 center">
+        <div class="card shadow card-btn" style="background-image: linear-gradient(to bottom right, #fca276, #fb686b);
+      ">
+          <div class="card-body">
+            <p class="card-text">
+              Show Order
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 center">
+        <div class="card shadow card-btn" style="  background-image: linear-gradient(to bottom right, #acb6e5, #86fde8);
+      ">
+          <div class="card-body">
+            <p class="card-text">
+              Edit Profile
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 center">
+        <div class="card shadow card-btn" style="  background-image: linear-gradient(to bottom right, #eeaeca, #94bbe9);
+      ">
+          <div routerLink="/customer/updateaddress" class="card-body">
+            <p class="card-text">
+              Manage Address Details
+            </p>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
-
   <br>
-
-  <div class="row">
-
-     <div class="col-md-4 center">
-       <div class="card shadow card-btn" style="  background-image: linear-gradient(to bottom right, #ff9966, #ff5e62);
-      ">
-         <div class="card-body">
-           <p class="card-text">
-             Show Order
-           </p>
-         </div>
-       </div>
-     </div>
-     
-    <div class="col-md-4 center">
-      <div class="card shadow card-btn" style="  background-image: linear-gradient(to bottom right, #acb6e5, #86fde8);
-      ">
-        <div class="card-body">
-          <p class="card-text">
-            Edit Profile
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 center">
-      <div class="card shadow card-btn" style="  background-image: linear-gradient(to bottom right, #eeaeca, #94bbe9);
-      ">
-        <div class="card-body">
-          <p class="card-text">
-           Address Details
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<br>
-<!-- footer -->
-<app-common-footer></app-common-footer>
+  <!-- footer -->
+  <app-common-footer></app-common-footer>

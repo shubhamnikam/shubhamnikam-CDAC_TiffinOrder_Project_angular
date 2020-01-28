@@ -34,35 +34,35 @@
           </div>
         </div>
         <!-- 2 -->
- <div class="col-md-6">
-   <div class="card-body" style="margin: 32px;">
-     <h2 class="card-title" style="margin: 8px; text-align: center;">Dinner Orders</h2>
-     <br>
-     <table class="table">
-       <thead class="thead-dark">
-         <tr>
-           <th scope="col">OrderId</th>
-           <th scope="col">Date</th>
-           <th scope="col">Type</th>
-           <th scope="col">Price</th>
-           <th scope="col">UserId</th>
-           <th scope="col">UserName</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr *ngFor="let order of allOrdersDinnerList">
-           <td>{{order.cartId}}</td>
-           <td>{{order.cartDate}}</td>
-           <td>{{order.orderType}}</td>
-           <td>{{order.cartPrice}}</td>
-           <td>{{order.user.userId}}</td>
-           <td>{{order.user.userName}}</td>
-         </tr>
-       </tbody>
-     </table>
-   </div>
- </div>
-      
+        <div class="col-md-6">
+          <div class="card-body" style="margin: 32px;">
+            <h2 class="card-title" style="margin: 8px; text-align: center;">Dinner Orders</h2>
+            <br>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">OrderId</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">UserId</th>
+                  <th scope="col">UserName</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of allOrdersDinnerList">
+                  <td>{{order.cartId}}</td>
+                  <td>{{order.cartDate}}</td>
+                  <td>{{order.orderType}}</td>
+                  <td>{{order.cartPrice}}</td>
+                  <td>{{order.user.userId}}</td>
+                  <td>{{order.user.userName}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
 
       </div>
     </div>

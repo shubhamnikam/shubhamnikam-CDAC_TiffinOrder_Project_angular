@@ -1,0 +1,197 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+      <br>
+      <br>
+      <h2 style="text-align: center;">Address & Payment Details</h2>
+      <br>
+      <br>
+      <div id="accordion">
+
+        <div class="card">
+
+          <div class="card-header center header-style" id="headingOne">
+
+            <button class="btn btn-warning head-button margin-auto" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne" id="one">Home Address</button>
+
+            <img class="margin-auto img-style" id="done-img-one" style="float: right; visibility: hidden;"
+              src="./../../../../assets/images/done.png">
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+              <form method="post" #myForm2="ngForm" (ngSubmit)='callToSaveHomeAddress()'>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="fieldone">Address Field 1</label>
+                    <input type="text" [(ngModel)]="homefieldone" name="homefieldone" class="form-control"
+                      id="homefieldone" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="fieldtwo">Address Field 2</label>
+                    <input type="text" [(ngModel)]="homefieldtwo" name="homefieldtwo" class="form-control"
+                      id="homefieldtwo" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="password" [(ngModel)]="homecity" name="homecity" class="form-control" id="homecity"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="number" min="0" max="6" [(ngModel)]="homepincode" name="homepincode"
+                      class="form-control" id="homepincode" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" [(ngModel)]="homestate" name="homestate" class="form-control" id="homestate"
+                      required>
+                  </div>
+
+                  <br>
+
+                  <div class="form-group center">
+                    <button onclick="document.getElementById('one').disabled=true; 
+                                   one =  document.getElementById('done-img-one').style.visibility='visible'  ;"
+                      data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                      type="submit" class="btn btn-success margin-auto">Add Home Address</button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header center header-style" id="headingTwo">
+
+            <button class="btn btn-warning head-button margin-auto collapsed" data-toggle="collapse"
+              data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="two">Work
+              Address</button>
+
+            <img class="margin-auto img-style" id="done-img-two" style="float: right; visibility: hidden;"
+              src="./../../../../assets/images/done.png">
+
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+
+              <form method="post" #myForm2="ngForm" (ngSubmit)='callToSaveWorkAddress()'>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="fieldone">Address Field 1</label>
+                    <input type="text" [(ngModel)]="workfieldone" name="workfieldone" class="form-control"
+                      id="workfieldone" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="fieldtwo">Address Field 2</label>
+                    <input type="text" [(ngModel)]="workfieldtwo" name="workfieldtwo" class="form-control"
+                      id="workfieldtwo" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="password" [(ngModel)]="workcity" name="workcity" class="form-control" id="workcity"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="number" min="0" max="6" [(ngModel)]="workpincode" name="workpincode"
+                      class="form-control" id="workpincode" required>
+                  </div>
+                  <div class="form  -group">
+                    <label for="state">State</label>
+                    <input type="text" [(ngModel)]="workstate" name="workstate" class="form-control" id="workstate"
+                      required>
+                  </div>
+
+                  <br>
+
+                  <div class="center">
+                    <button onclick="document.getElementById('two').disabled=true; 
+                    document.getElementById('done-img-two').style.visibility='visible';" data-toggle="collapse"
+                      data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="submit"
+                      class="btn btn-success margin-auto">Add Work Address</button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-header center header-style" id="headingThree">
+
+            <button class="btn btn-warning head-button margin-auto collapsed" data-toggle="collapse"
+              data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="three">Payment
+              Details</button>
+
+            <img class="margin-auto img-style" id="done-img-three" style="float: right; visibility: hidden;"
+              src="./../../../../assets/images/done.png">
+
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+
+              <form method="post" #myForm2="ngForm" (ngSubmit)='callToSavePaymentAddress()'>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="card">Card Number</label>
+                    <input type="number" [(ngModel)]="card" name="card" class="form-control" id="card" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="date">Expiry Date</label>
+                    <input type="text" [(ngModel)]="date" name="date" class="form-control" id="date" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="number" [(ngModel)]="cvv" name="cvv" class="form-control" id="cvv" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="city">UPI ID</label>
+                    <input type="text" [(ngModel)]="upi" name="upi" class="form-control" id="upi" required>
+                  </div>
+
+                  <br>
+
+                  <div class="center">
+                    <button onclick="document.getElementById('three').disabled=true; 
+                    document.getElementById('done-img-three').style.visibility='visible' ;
+                    document.getElementById('ready').style.visibility='visible' " data-toggle="collapse"
+                      data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="submit"
+                      class="btn btn-success margin-auto">Add Payment
+                      Details</button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div style="width: 100% ; text-align: center;">
+          <button routerLink="/user/signin" id="ready" style="visibility: hidden;" type="button"
+            class="btn btn-primary">Ready to Go..!</button>
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <div class="col-md-2"></div>
+
+  </div>
+</div>

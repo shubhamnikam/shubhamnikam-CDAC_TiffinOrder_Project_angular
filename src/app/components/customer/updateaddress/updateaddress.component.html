@@ -1,0 +1,143 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+      <br>
+      <br>
+      <h2 style="text-align: center;">Update Address & Payment Details</h2>
+      <br>
+      <br>
+      <div id="accordion">
+
+        <div class="card">
+
+          <div class="card-header center header-style" id="headingOne">
+
+            <button class="btn btn-warning head-button margin-auto" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne" id="one">Home Address</button>
+
+            <img class="margin-auto img-style" id="done-img-one" style="float: right; visibility: hidden;"
+              src="./../../../../assets/images/done.png">
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+              <form method="post" #myForm2="ngForm" (ngSubmit)='callToUpdateHomeAddress()'>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="fieldone">Address Field 1</label>
+                    <input type="text" [(ngModel)]="homefieldone" name="homefieldone" class="form-control"
+                      id="homefieldone" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="fieldtwo">Address Field 2</label>
+                    <input type="text" [(ngModel)]="homefieldtwo" name="homefieldtwo" class="form-control"
+                      id="homefieldtwo" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="password" [(ngModel)]="homecity" name="homecity" class="form-control" id="homecity"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="number" min="0" max="6" [(ngModel)]="homepincode" name="homepincode"
+                      class="form-control" id="homepincode" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" [(ngModel)]="homestate" name="homestate" class="form-control" id="homestate"
+                      required>
+                  </div>
+
+                  <br>
+
+                  <div class="form-group center">
+                    <button onclick="document.getElementById('one').disabled=true; 
+                                   one =  document.getElementById('done-img-one').style.visibility='visible'  ;"
+                      data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                      type="submit" class="btn btn-success margin-auto">Update Home Address</button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header center header-style" id="headingTwo">
+
+            <button class="btn btn-warning head-button margin-auto collapsed" data-toggle="collapse"
+              data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="two">Update Work
+              Address</button>
+
+            <img class="margin-auto img-style" id="done-img-two" style="float: right; visibility: hidden;"
+              src="./../../../../assets/images/done.png">
+
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+
+              <form method="post" #myForm2="ngForm" (ngSubmit)='callToUpdateWorkAddress()'>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="fieldone">Address Field 1</label>
+                    <input type="text" [(ngModel)]="workfieldone" name="workfieldone" class="form-control"
+                      id="workfieldone" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="fieldtwo">Address Field 2</label>
+                    <input type="text" [(ngModel)]="workfieldtwo" name="workfieldtwo" class="form-control"
+                      id="workfieldtwo" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="password" [(ngModel)]="workcity" name="workcity" class="form-control" id="workcity"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="number" min="0" max="6" [(ngModel)]="workpincode" name="workpincode"
+                      class="form-control" id="workpincode" required>
+                  </div>
+                  <div class="form  -group">
+                    <label for="state">State</label>
+                    <input type="text" [(ngModel)]="workstate" name="workstate" class="form-control" id="workstate"
+                      required>
+                  </div>
+
+                  <br>
+
+                  <div class="center">
+                    <button onclick="document.getElementById('two').disabled=true; 
+                    document.getElementById('done-img-two').style.visibility='visible';" data-toggle="collapse"
+                      data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="submit"
+                      class="btn btn-success margin-auto">Update Work Address</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+      <br>
+
+      <div style="width: 100% ; text-align: center;">
+        <button routerLink="/customer/profile" id="cancel" style="visibility: hidden;" type="button"
+          class="btn btn-primary">Go to profile</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-2"></div>
+
+</div>
+</div>

@@ -25,7 +25,8 @@ import { OwnerhomeComponent } from './components/owner/ownerhome/ownerhome.compo
 import { DashboardhomeComponent } from './components/owner/dashboardhome/dashboardhome.component';
 import { AddadminComponent } from './components/owner/addadmin/addadmin.component';
 import { AddmenuComponent } from './components/owner/addmenu/addmenu.component';
-import { DailymenuComponent } from './component/owner/dailymenu/dailymenu.component';
+import { AddressComponent } from './components/customer/address/address.component';
+import { UpdateaddressComponent } from './components/customer/updateaddress/updateaddress.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { DailymenuComponent } from './component/owner/dailymenu/dailymenu.compon
     DeletemenuComponent,
     OrdersComponent,
     CustomersComponent,
-    DailymenuComponent
+    AddressComponent,
+    UpdateaddressComponent
+    
     
   ],
   imports: [
@@ -67,6 +70,8 @@ import { DailymenuComponent } from './component/owner/dailymenu/dailymenu.compon
       { path: "user/signout", component: LandingComponent},
 
       //customer route
+      { path: "customer/address", component: AddressComponent},
+      { path: "customer/updateaddress", component: UpdateaddressComponent, canActivate: [AuthService] },
       { path: "customer/menu", component: MenuComponent, canActivate: [AuthService] },
       { path: "customer/cart", component: CartComponent, canActivate: [AuthService] },
       { path: "customer/notification", component: CartComponent, canActivate: [AuthService] },

@@ -16,7 +16,9 @@ export class SignupComponent implements OnInit {
   public phone = "";
   public message = "";
 
-  constructor(private service: DataService, private router: Router, ) { }
+  signUpUserId = "";
+
+  constructor(private service: DataService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -31,7 +33,6 @@ export class SignupComponent implements OnInit {
     }
 
     let responseObj = null;
-    let navigationURL = null;
 
     console.log(signUpCredentialData);
 
@@ -41,12 +42,15 @@ export class SignupComponent implements OnInit {
     observableResult.subscribe((result) => {
       console.log(result);
       responseObj = result;
-      navigationURL = responseObj.userSigninURL;
-      console.log(navigationURL);
-      this.router.navigate(['.' + navigationURL]);
+      this.signUpUserId = responseObj.signUpUserId;
+
+
+      window.sessionStorage.setItem("signUpUserId", this.signUpUserId);
+
+      this.router.navigate(['./customer/address']);
+
     }, (error) => {
       console.log(error);
     })
   }
-
 }
