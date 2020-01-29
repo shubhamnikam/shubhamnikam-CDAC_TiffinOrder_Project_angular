@@ -27,6 +27,7 @@ import { AddadminComponent } from './components/owner/addadmin/addadmin.componen
 import { AddmenuComponent } from './components/owner/addmenu/addmenu.component';
 import { AddressComponent } from './components/customer/address/address.component';
 import { UpdateaddressComponent } from './components/customer/updateaddress/updateaddress.component';
+import { ShoworderComponent } from './components/customer/showorder/showorder.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { UpdateaddressComponent } from './components/customer/updateaddress/upda
     OrdersComponent,
     CustomersComponent,
     AddressComponent,
-    UpdateaddressComponent
+    UpdateaddressComponent,
+    ShoworderComponent
     
     
   ],
@@ -71,6 +73,7 @@ import { UpdateaddressComponent } from './components/customer/updateaddress/upda
 
       //customer route
       { path: "customer/address", component: AddressComponent},
+      { path: "customer/orderlist", component: ShoworderComponent, canActivate: [AuthService] },
       { path: "customer/updateaddress", component: UpdateaddressComponent, canActivate: [AuthService] },
       { path: "customer/menu", component: MenuComponent, canActivate: [AuthService] },
       { path: "customer/cart", component: CartComponent, canActivate: [AuthService] },

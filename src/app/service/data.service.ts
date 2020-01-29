@@ -35,6 +35,11 @@ export class DataService {
 
     return this.httpHelper.post(this.baseUrl + "customer/payment/"+userId, paymentData);
   }
+  //===================get users order=============
+  getUsersOrders(userId) {
+    return this.httpHelper.get(this.baseUrl + "customer/getusersorder/" + userId);
+  }
+
    //===========get address and payment=============
   getAddressHomeService(userId, addressType) {
     console.log("=========Get Address Data==========>");

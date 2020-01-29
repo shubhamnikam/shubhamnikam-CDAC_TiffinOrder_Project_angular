@@ -1,0 +1,71 @@
+<!-- customernavbar -->
+<app-customernavbar></app-customernavbar>
+
+<br>
+
+<form method="post" #myForm2="ngForm" (ngSubmit)="callForSignUpValidation()">
+  <div>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <!-- 1 -->
+        <div class="col-md-6">
+          <div class="card-body" style="margin: 32px;">
+            <h2 class="card-title" style="margin: 8px; text-align: center;">Lunch Orders</h2>
+            <br>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">OrderId</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of allOrdersLunchList">
+                  <td>{{order.cartId}}</td>
+                  <td>{{order.cartDate}}</td>
+                  <td>{{order.orderType}}</td>
+                  <td>{{order.cartPrice}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="col-md-6">
+          <div class="card-body" style="margin: 32px;">
+            <h2 class="card-title" style="margin: 8px; text-align: center;">Dinner Orders</h2>
+            <br>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">OrderId</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of allOrdersDinnerList">
+                  <td>{{order.cartId}}</td>
+                  <td>{{order.cartDate}}</td>
+                  <td>{{order.orderType}}</td>
+                  <td>{{order.cartPrice}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- footer -->
+<app-common-footer></app-common-footer>
+

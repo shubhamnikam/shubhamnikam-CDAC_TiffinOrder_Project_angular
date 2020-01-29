@@ -65,11 +65,11 @@ export class UpdateaddressComponent implements OnInit {
       console.log(result);
       this.responseObj1 = result;
 
-      this.homefieldone = this.responseObj1.addressFieldOne;
-      this.homefieldtwo = this.responseObj1.addressFieldTwo;
-      this.homecity = this.responseObj1.addressCity;
-      this.homepincode = this.responseObj1.addressPincode;
-      this.homestate = this.responseObj1.addressState;
+      this.homefieldone = this.responseObj1.homeAddressData.addressFieldOne;
+      this.homefieldtwo = this.responseObj1.homeAddressData.addressFieldTwo;
+      this.homecity = this.responseObj1.homeAddressData.addressCity;
+      this.homepincode = this.responseObj1.homeAddressData.addressPincode;
+      this.homestate = this.responseObj1.homeAddressData.addressState;
 
     }, (error) => {
       console.log(error);
@@ -82,11 +82,11 @@ export class UpdateaddressComponent implements OnInit {
       console.log(result);
       this.responseObj2 = result;
 
-      this.workfieldone = this.responseObj2.addressFieldOne;
-      this.workfieldtwo = this.responseObj2.addressFieldTwo;
-      this.workcity = this.responseObj2.addressCity;
-      this.workpincode = this.responseObj2.addressPincode;
-      this.workstate = this.responseObj2.addressState;
+      this.workfieldone = this.responseObj2.workAddressData.addressFieldOne;
+      this.workfieldtwo = this.responseObj2.workAddressData.addressFieldTwo;
+      this.workcity = this.responseObj2.workAddressData.addressCity;
+      this.workpincode = this.responseObj2.workAddressData.addressPincode;
+      this.workstate = this.responseObj2.workAddressData.addressState;
 
     }, (error) => {
       console.log(error);

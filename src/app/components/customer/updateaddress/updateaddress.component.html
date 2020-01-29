@@ -40,7 +40,7 @@
                   </div>
                   <div class="form-group">
                     <label for="city">City</label>
-                    <input type="password" [(ngModel)]="homecity" name="homecity" class="form-control" id="homecity"
+                    <input type="text" [(ngModel)]="homecity" name="homecity" class="form-control" id="homecity"
                       required>
                   </div>
                   <div class="form-group">
@@ -73,7 +73,7 @@
           <div class="card-header center header-style" id="headingTwo">
 
             <button class="btn btn-warning head-button margin-auto collapsed" data-toggle="collapse"
-              data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="two">Update Work
+              data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="two">Work
               Address</button>
 
             <img class="margin-auto img-style" id="done-img-two" style="float: right; visibility: hidden;"
@@ -98,7 +98,7 @@
                   </div>
                   <div class="form-group">
                     <label for="city">City</label>
-                    <input type="password" [(ngModel)]="workcity" name="workcity" class="form-control" id="workcity"
+                    <input type="text" [(ngModel)]="workcity" name="workcity" class="form-control" id="workcity"
                       required>
                   </div>
                   <div class="form-group">
@@ -125,19 +125,18 @@
             </div>
           </div>
         </div>
-      
-      <br>
+        <br>
 
-      <div style="width: 100% ; text-align: center;">
-        <button routerLink="/customer/profile" id="cancel" style="visibility: hidden;" type="button"
-          class="btn btn-primary">Go to profile</button>
+        <div style="width: 100% ; text-align: center;">
+          <button routerLink="/customer/profile" id="cancel" type="button"
+            class="btn btn-primary">Go to profile</button>
+        </div>
+
       </div>
 
     </div>
 
+    <div class="col-md-2"></div>
+
   </div>
-
-  <div class="col-md-2"></div>
-
-</div>
 </div>

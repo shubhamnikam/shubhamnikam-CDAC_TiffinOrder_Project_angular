@@ -71,11 +71,11 @@ export class ProfileComponent implements OnInit {
       console.log(result);
       this.responseObj1 = result;
 
-      this.homefieldone = this.responseObj1.addressFieldOne;
-      this.homefieldtwo = this.responseObj1.addressFieldTwo;
-      this.homecity = this.responseObj1.addressCity;
-      this.homepincode = this.responseObj1.addressPincode;
-      this.homestate = this.responseObj1.addressState;
+      this.homefieldone = this.responseObj1.homeAddressData.addressFieldOne;
+      this.homefieldtwo = this.responseObj1.homeAddressData.addressFieldTwo;
+      this.homecity = this.responseObj1.homeAddressData.addressCity;
+      this.homepincode = this.responseObj1.homeAddressData.addressPincode;
+      this.homestate = this.responseObj1.homeAddressData.addressState;
 
     }, (error) => {
       console.log(error);
@@ -88,11 +88,11 @@ export class ProfileComponent implements OnInit {
       console.log(result);
       this.responseObj2 = result;
 
-      this.workfieldone = this.responseObj2.addressFieldOne;
-      this.workfieldtwo = this.responseObj2.addressFieldTwo;
-      this.workcity = this.responseObj2.addressCity;
-      this.workpincode = this.responseObj2.addressPincode;
-      this.workstate = this.responseObj2.addressState;
+      this.workfieldone = this.responseObj2.workAddressData.addressFieldOne;
+      this.workfieldtwo = this.responseObj2.workAddressData.addressFieldTwo;
+      this.workcity = this.responseObj2.workAddressData.addressCity;
+      this.workpincode = this.responseObj2.workAddressData.addressPincode;
+      this.workstate = this.responseObj2.workAddressData.addressState;
 
     }, (error) => {
       console.log(error);
@@ -108,10 +108,10 @@ export class ProfileComponent implements OnInit {
       console.log(result);
       this.responseObj3 = result;
 
-      this.card = this.responseObj3.paymentCardNumber;
-      this.date = this.responseObj3.paymentCardExpiryDate;
-      this.cvv = this.responseObj3.paymentCardCVV;
-      this.upi = this.responseObj3.paymentUPI;
+      this.card = this.responseObj3.paymentData.paymentCardNumber;
+      this.date = this.responseObj3.paymentData.paymentCardExpiryDate;
+      this.cvv = this.responseObj3.paymentData.paymentCardCVV;
+      this.upi = this.responseObj3.paymentData.paymentUPI;
 
     }, (error) => {
       console.log(error);

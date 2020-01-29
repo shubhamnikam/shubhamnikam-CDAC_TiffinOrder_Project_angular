@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   public menuQuantity: any;
   public finalCartPrice = 0;
   public tempFinalCartPrice = 0;
+  public tempFinalCartPriceForCheck = 0;
   public dailyMenuListDataLength: number;
   public cartItemsData = [];
   public itemsPriceArray = [];
@@ -27,15 +28,15 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.setOrderDefaultType();
     //this.loadDefaultMenu();
-    
+
   }
 
 
-  setOrderDefaultType(){
-        this.orderType = "LUNCH";
-        this.loadDefaultMenu();
-  } 
-  setOrderTypeLunch(){
+  setOrderDefaultType() {
+    this.orderType = "LUNCH";
+    this.loadDefaultMenu();
+  }
+  setOrderTypeLunch() {
     console.log("LUNCH");
     this.orderType = "LUNCH";
     this.loadDefaultMenu();
@@ -45,7 +46,7 @@ export class MenuComponent implements OnInit {
     this.orderType = "DINNER";
     this.loadDefaultMenu();
   }
-  setOrderTypeSnack(){
+  setOrderTypeSnack() {
     console.log("SNACK");
     this.orderType = "SNACK";
     this.loadDefaultMenu();
@@ -138,32 +139,40 @@ export class MenuComponent implements OnInit {
     console.log(cartData);
 
 
+
     //==============service for sending only cartData :: post request 1=============
     //============== :: post request 1 ====get only cartId back============
 
-    this.tempUser = window.sessionStorage.getItem('userData');
 
-    let observable1 = this.service.sendCartDataToServerSide(cartData, JSON.parse(this.tempUser).userId);
-    let tempResultObjectHolder1;
-    let tempCartId;
+    if (this.finalCartPrice) {
+      this.tempUser = window.sessionStorage.getItem('userData');
 
-
-    observable1.subscribe((result) => {
-      console.log(result);
-
-      tempResultObjectHolder1 = result;
-
-      tempCartId = tempResultObjectHolder1.cartId;
-
-      this.getCartIdFromRequest1 = tempCartId;
-      console.log(this.getCartIdFromRequest1);
+      let observable1 = this.service.sendCartDataToServerSide(cartData, JSON.parse(this.tempUser).userId);
+      let tempResultObjectHolder1;
+      let tempCartId;
 
 
-      this.sendCartItemsToServerSide();
+      observable1.subscribe((result) => {
+        console.log(result);
 
-    }, (error) => {
-      console.log(error);
-    });
+        tempResultObjectHolder1 = result;
+
+        tempCartId = tempResultObjectHolder1.cartId;
+
+        this.getCartIdFromRequest1 = tempCartId;
+        console.log(this.getCartIdFromRequest1);
+
+
+        this.sendCartItemsToServerSide();
+
+      }, (error) => {
+        console.log(error);
+      });
+    }else{
+      if(this.finalCartPrice==0){
+          alert("cart empty... please select something")
+      }
+    }
   }
 
 
@@ -200,6 +209,7 @@ export class MenuComponent implements OnInit {
       // }
     }
 
+
     let finalCartData = this.cartItemsData;
 
     window.sessionStorage.setItem('finalCartPrice', JSON.stringify(this.finalCartPrice));
@@ -234,7 +244,7 @@ export class MenuComponent implements OnInit {
 
 
     //setup functionality to not go back
-    window.sessionStorage.setItem('isOrderStatus',"1");
+    window.sessionStorage.setItem('isOrderStatus', "1");
     this.router.navigate(['./customer/cart']);
 
   }
