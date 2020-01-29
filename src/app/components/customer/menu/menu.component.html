@@ -11,7 +11,8 @@
           <h1 class="display-6">New year offer</h1>
           <p class="lead">upto 25% cashback...</p>
           <p>save big on every order </p>
-          <a class="btn btn-outline-light" href="#" role="button">Learn more</a>
+          <a class="btn btn-outline-light" href="#" role="button" 
+          data-toggle="modal" data-keyboard="false" data-target="#myModal">Learn more</a>
         </div>
       </div>
       <div class="carousel-item">
@@ -19,7 +20,8 @@
           <h1 class="display-6">New year offer</h1>
           <p class="lead">upto 25% cashback...</p>
           <p>save big on every order </p>
-          <a class="btn btn-outline-light" href="#" role="button">Learn more</a>
+          <a class="btn btn-outline-light" href="#" role="button"
+          data-toggle="modal" data-keyboard="false" data-target="#myModal">Learn more</a>
         </div>
       </div>
       <div class="carousel-item">
@@ -27,7 +29,8 @@
           <h1 class="display-6">New year offer</h1>
           <p class="lead">upto 25% cashback...</p>
           <p>save big on every order </p>
-          <a class="btn btn-outline-light" href="#" role="button">Learn more</a>
+          <a class="btn btn-outline-light" href="#" role="button"
+            data-toggle="modal" data-keyboard="false" data-target="#myModal">Learn more</a>
         </div>
       </div>
       <div class="carousel-item">
@@ -35,7 +38,8 @@
           <h1 class="display-6">New year offer</h1>
           <p class="lead">upto 25% cashback...</p>
           <p>save big on every order </p>
-          <a class="btn btn-outline-light" href="#" role="button">Learn more</a>
+          <a class="btn btn-outline-light" href="#" role="button"
+         data-toggle="modal" data-keyboard="false" data-target="#myModal">Learn more</a>
         </div>
       </div>
     </div>
@@ -48,16 +52,9 @@
       <h2>Menu</h2>
     </div>
     <div class="btn-group col-md-4 text-end">
-      <button type="button" class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Today
+      <button type="button" class="btn btn-outline-danger" routerLink="/customer/orderlist">
+        All Orders
       </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Tomorrow</a>
-        <a class="dropdown-item" href="#">Day after tomorrow</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Choose date</a>
-      </div>
     </div>
   </div>
 </div>
@@ -121,5 +118,35 @@
   </div>
 </form>
 
+
+
 <!-- footer -->
 <app-common-footer></app-common-footer>
+
+<div id="myModal" class="modal"  role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header" style="background-color: mediumseagreen;">
+         <h4 style="color: #fff;" class="modal-title margin-auto">OFFER</h4>
+       </div>
+
+       <div class="modal-body margin-auto">
+         <img class="margin-auto" src="../../../../assets/images/discount.gif" style="width: 96px; height: 96px;">
+       </div>
+
+       <div class="margin-auto">
+         <p style="padding: 10px;">
+           Celebrate new year with us and Get upto 25 % off on all menu's on orders above 150 Rupees
+         </p>
+       </div>
+
+       <div style="text-align: center;">
+         <button type="button" class="btn btn-warning" data-dismiss="modal">Order Now</button>
+       </div>
+
+       <div class="modal-footer margin-auto">
+       </div>
+    </div>
+  </div>
+</div>
+

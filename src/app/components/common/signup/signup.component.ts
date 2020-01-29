@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MustMatch } from './MustWatch.components';
 
 @Component({
   selector: 'app-signup',
@@ -9,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
+  registerForm: FormGroup;
+  submitted = false;
 
   public name = "";
   public email = "";
@@ -18,10 +22,23 @@ export class SignupComponent implements OnInit {
 
   signUpUserId = "";
 
-  constructor(private service: DataService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,private service: DataService, private router: Router) { }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+      name: ['',  [Validators.required]],
+      phone: ['', [Validators.required]]
+    }, {
+        validator: MustMatch('password', 'password')
+    });
   }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
+
 
   callForSignUpValidation() {
 
@@ -30,6 +47,13 @@ export class SignupComponent implements OnInit {
       userEmail: this.email,
       userPassword: this.password,
       userPhone: this.phone
+    }
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
     }
 
     let responseObj = null;
@@ -53,4 +77,11 @@ export class SignupComponent implements OnInit {
       console.log(error);
     })
   }
+
+
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
+  }
+
 }

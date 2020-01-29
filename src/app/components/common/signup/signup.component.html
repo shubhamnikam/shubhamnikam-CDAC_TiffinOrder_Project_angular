@@ -1,4 +1,4 @@
-<form method="post" #myForm2="ngForm" (ngSubmit)="callForSignUpValidation()">
+<form method="post" [formGroup]="registerForm" #myForm2="ngForm" (ngSubmit)="callForSignUpValidation()">
   <div>
     <div class="card md-12 shadow bg-white rounded" style="max-width:1000px;
         height:650px; margin: 0 auto;margin-top: 42px;">
@@ -12,27 +12,49 @@
             <h2 class="card-title" style="margin: 8px; text-align: center;">Register</h2>
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="name" [(ngModel)]="name" name="name" class="form-control" id="name">
+              <input formControlName="name" type="name" required placeholder="Mike Ross" formControlName="name"
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" [(ngModel)]="name"
+                name="name" id="name">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email">
+              <input formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="email" name="email"
+                class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$"
+                placeholder="mike@gmail.com">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              </div>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" [(ngModel)]="password" name="password" class="form-control"
-                id="password">
+              <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted &&
+              f.confirmPassword.errors }" [(ngModel)]="password" name="password" id="password">
+              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Password is required</div>
+              </div>
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="phone" [(ngModel)]="phone" name="phone" class="form-control" id="phone">
+              <input formControlName="phone" required placeholder="Mike Ross" formControlName="phone"
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" type="phone"
+                placeholder="9849898654" pattern="([0-9]).{10,}" required [(ngModel)]="phone" name="phone"
+                class="form-control" id="phone">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Phone is required</div>
+              </div>
             </div>
 
 
             <div style="text-align: end; margin-top: 24px;">
               <button type="submit" class="btn btn-warning"
                 style="padding-left:24px; padding-right: 24px;">SignUp</button>
-              <button routerLink="/user/owner" type="submit" class="btn btn-outline-danger"
+              <button type="reset" (click)="onReset()" routerLink="/user/owner" type="submit"
+                class="btn btn-outline-danger"
                 style="padding-left:24px; padding-right: 24px;margin-left: 16px">Cancel</button>
             </div>
 

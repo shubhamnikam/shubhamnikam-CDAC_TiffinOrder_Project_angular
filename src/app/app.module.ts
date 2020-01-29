@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
-import { NgModel, NgForm, FormsModule } from '@angular/forms';
+import { NgModel, NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomenavbarComponent } from './components/common/homenavbar/homenavbar.component';
 import { LandingComponent } from './components/common/landing/landing.component';
@@ -60,6 +60,7 @@ import { ShoworderComponent } from './components/customer/showorder/showorder.co
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
 
       // defaulthome route
